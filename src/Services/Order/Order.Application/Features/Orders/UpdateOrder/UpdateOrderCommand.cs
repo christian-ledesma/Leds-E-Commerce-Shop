@@ -1,6 +1,8 @@
-﻿namespace Order.Application.Features.Orders.GetOrderList
+﻿using MediatR;
+
+namespace Order.Application.Features.Orders.UpdateOrder
 {
-    public class OrderDto
+    public class UpdateOrderCommand : IRequest<Unit>
     {
         public int Id { get; set; }
         public string UserName { get; set; }
