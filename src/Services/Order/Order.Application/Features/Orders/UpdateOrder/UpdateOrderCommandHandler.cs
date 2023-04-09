@@ -25,7 +25,8 @@ namespace Order.Application.Features.Orders.UpdateOrder
         {
             var order = await _orderRepository.GetByIdAsync(request.Id) ?? throw new NotFoundException(nameof(Order), request.Id);
 
-            order = _mapper.Map<Order>(request);
+            _mapper.Map(request, order, typeof(UpdateOrderCommand), typeof(Order));
+
             await _orderRepository.UpdateAsync(order);
 
             _logger.LogInformation($"Order {order.Id} updated succesfully");
